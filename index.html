@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Nicole | Web Developer Portfolio</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="antialiased">
+
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <div id="cursor-dot"></div>
+    <div id="cursor-outline"></div>
+
+    <div class="shapes-container">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
+    <a href="#" id="back-to-top" class="interactive"><i class="fas fa-arrow-up"></i></a>
+
+    <header class="fixed top-0 left-0 right-0 z-[70] bg-opacity-70 backdrop-blur-lg border-b">
+        <div class="container mx-auto px-6 lg:px-12 py-4">
+            <nav class="flex justify-between items-center">
+                <a href="#home"
+                    class="text-2xl sm:text-3xl font-bold tracking-tighter interactive main-text text-stroke">&lt;nicole.dev/&gt;</a>
+
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <div class="hidden md:flex items-center space-x-8 font-medium">
+                        <a href="#about" class="nav-link interactive">About</a>
+                        <a href="#experience" class="nav-link interactive">Experience</a>
+                        <a href="#education" class="nav-link interactive">Education</a>
+                        <a href="#skills" class="nav-link interactive">Skills</a>
+                        <a href="#works" class="nav-link interactive">Works</a>
+                        <a href="#certifications" class="nav-link interactive">Certifications</a>
+                        <a href="#contact" class="nav-link interactive">Contact</a>
+                    </div>
+
+                    <button id="theme-toggle"
+                        class="text-xl w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-500/10 transition-colors interactive">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </button>
+
+                    <button id="menu-toggle"
+                        class="md:hidden text-2xl w-10 h-10 flex items-center justify-center interactive main-text">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div id="mobile-menu"
+        class="fixed top-0 right-0 h-full w-full bg-opacity-90 backdrop-blur-lg z-50 flex flex-col items-center justify-center transform translate-x-full">
+        <a href="#about" class="text-2xl font-bold my-3 interactive main-text">About</a>
+        <a href="#experience" class="text-2xl font-bold my-3 interactive main-text">Experience</a>
+        <a href="#education" class="text-2xl font-bold my-3 interactive main-text">Education</a>
+        <a href="#skills" class="text-2xl font-bold my-3 interactive main-text">Skills</a>
+        <a href="#works" class="text-2xl font-bold my-3 interactive main-text">Works</a>
+        <a href="#certifications" class="text-2xl font-bold my-3 interactive main-text">Certifications</a>
+        <a href="#contact" class="text-2xl font-bold my-3 interactive main-text">Contact</a>
+    </div>
+
+    <main class="container mx-auto px-6 lg:px-12 relative z-10">
+
+        <section id="home" class="min-h-screen flex flex-col justify-center pt-24 md:pt-0 section-separator">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal-left">
+                    <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold leading-tight">
+                        <span class="hero-intro">I am</span> <br>
+                        <span class="text-stroke typing-container"><span>&nbsp;</span><span
+                                class="typing-cursor"></span></span>
+                    </h1>
+                    <p class="mt-6 text-lg max-w-lg text-secondary">
+                        A passionate developer from Philippines, on a mission to build beautiful, function and
+                        user-centric digital experiences.
+                    </p>
+                    <div class="mt-10 flex items-center space-x-4">
+                        <a href="#contact" class="btn-primary interactive">Let's Talk</a>
+                        <a href="#contact" class="btn-secondary interactive">Contact Me</a>
+                    </div>
+                </div>
+                <div class="flex justify-center items-center reveal-right">
+                    <div class="relative w-72 h-72 lg:w-80 lg:h-80">
+                        <div class="absolute inset-0 rounded-full opacity-40 blur-2xl animate-pulse"
+                            style="background-color: var(--secondary-color);"></div>
+                        <img src="user.png" alt="Nicole"
+                            class="relative w-full h-full object-cover rounded-full border-4"
+                            style="border-color: var(--primary-color);"
+                            onerror="this.onerror=null;this.src='https://placehold.co/320x320/eebbc3/232946?text=User';">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-24 section-separator">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-2/5 order-1 lg:order-1 flex justify-center reveal-left">
+                    <div class="about-image-container interactive">
+                        <img src="me.png" alt="A photo of Nicole" class="about-image"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x500/232946/fffffe?text=Nicole';">
+                    </div>
+                </div>
+                <div class="lg:w-3/5 order-2 lg:order-2 reveal-right">
+                    <h2 class="text-3xl md:text-4xl font-bold main-text text-stroke mb-8 text-center lg:text-left">About
+                        Me</h2>
+                    <div class="text-lg leading-relaxed text-secondary space-y-4 text-center lg:text-justify">
+                        <p>I am Nicole, a 4th-year IT student with a strong passion for software engineering, web
+                            development, and mobile development. My academic journey and projects have allowed me to
+                            gain hands-on experience in full-stack web development, PHP/MySQL, database design, and
+                            front-end technologies, as well as beginner-level exposure to Flutter and Dart for mobile
+                            applications.</p>
+                        <p>I am particularly interested in creating systems that are functional, efficient, and
+                            user-friendly, with a focus on solving real-world problems. My work includes building
+                            modular web-based applications that integrate features such as inventory tracking,
+                            procurement, logistics, and document management, all while ensuring consistent UI/UX and
+                            scalability.</p>
+                        <p>I value continuous learning, adaptability, and collaboration, and I aim to further enhance my
+                            skills to pursue a professional career as a software engineer or web/mobile developer.</p>
+                    </div>
+                    <div class="mt-10 text-center lg:text-left">
+                        <a href="cv.pdf" download class="btn-primary interactive">
+                            Download CV <i class="fas fa-download ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-24 section-separator">
+            <div class="text-center reveal">
+                <h2 class="text-3xl md:text-4xl font-bold main-text text-stroke">Work Experience</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-secondary">My professional journey and hands-on experience.</p>
+            </div>
+            <div class="mt-16 max-w-3xl mx-auto">
+                <div class="reveal-left">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                        <p class="text-sm font-semibold text-secondary">2025</p>
+                        <h3 class="text-2xl font-bold mt-1 main-text">Full-Stack Development Intern</h3>
+                        <p class="mt-2 text-secondary">Contributed to live projects by developing and maintaining
+                            features using PHP, MySQL, and Bootstrap. Gained practical experience in database
+                            management, server-side logic, and creating responsive front-end interfaces in a
+                            collaborative team environment.</p>
+                    </div>
+                </div>
+                <div class="reveal-right">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <p class="text-sm font-semibold text-secondary">2023 - 2024</p>
+                        <h3 class="text-2xl font-bold mt-1 main-text">Freelance Web Developer</h3>
+                        <p class="mt-2 text-secondary">Designed and built custom websites for clients from concept to
+                            deployment. Handled both front-end (HTML, CSS, JS, Bootstrap) and back-end (PHP, MySQL)
+                            development, delivering functional, user-friendly, and responsive web solutions.</p>
+                        <h4 class="font-bold main-text mt-4">Key Achievements:</h4>
+                        <ul class="list-disc list-inside text-secondary space-y-1 mt-2">
+                            <li>Successfully delivered multiple client projects on time, including a comprehensive
+                                logistics management system.</li>
+                            <li>Engineered scalable database schemas to support application features and data
+                                requirements.</li>
+                            <li>Implemented custom back-end functionalities to meet specific client needs.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="py-24 section-separator">
+            <div class="text-center reveal">
+                <h2 class="text-3xl md:text-4xl font-bold main-text text-stroke">Educational Background</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-secondary">My academic foundation in technology.</p>
+            </div>
+            <div class="mt-16 max-w-3xl mx-auto">
+                <div class="reveal-left">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                        <p class="text-sm font-semibold text-secondary">College</p>
+                        <h3 class="text-2xl font-bold mt-1 main-text"><i
+                                class="fas fa-graduation-cap text-[var(--primary-color)] mr-3"></i>Bestlink College of
+                            the Philippines</h3>
+                        <p class="mt-2 font-medium text-secondary">Bachelor of Science in Information Technology (BSIT)
+                        </p>
+                    </div>
+                </div>
+                <div class="reveal-right">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                        <p class="text-sm font-semibold text-secondary">Senior High School</p>
+                        <h3 class="text-2xl font-bold mt-1 main-text"><i
+                                class="fas fa-graduation-cap text-[var(--primary-color)] mr-3"></i>Asian Institute of
+                            Computer Studies</h3>
+                        <p class="mt-2 font-medium text-secondary">ICT Strand</p>
+                    </div>
+                </div>
+                <div class="reveal-left">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <p class="text-sm font-semibold text-secondary">Junior High School</p>
+                        <h3 class="text-2xl font-bold mt-1 main-text"><i
+                                class="fas fa-graduation-cap text-[var(--primary-color)] mr-3"></i>Commonwealth
+                            Highschool</h3>
+                        <p class="mt-2 font-medium text-secondary">TVL - ICT</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-24 section-separator">
+            <div class="text-center reveal">
+                <h2 class="text-3xl md:text-4xl font-bold main-text text-stroke">My Tech Stacks</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-secondary">The technologies, languages, and tools I use to build
+                    things.</p>
+            </div>
+            <div class="mt-16 space-y-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-center mb-8 text-stroke reveal">Core Technologies</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                        <div class="skill-card interactive reveal">
+                            <div class="skill-card-content"><img
+                                    src="https://www.vectorlogo.zone/logos/w3_html5/w3_html5-icon.svg" alt="HTML5">
+                                <h4>HTML5</h4>
+                            </div>
+                        </div>
+                        <div class="skill-card interactive reveal">
+                            <div class="skill-card-content"><img
+                                    src="https://www.vectorlogo.zone/logos/w3_css/w3_css-icon.svg" alt="CSS3">
+                                <h4>CSS3</h4>
+                            </div>
+                        </div>
+                        <div class="skill-card interactive reveal">
+                            <div class="skill-card-content"><img
+                                    src="https://www.vectorlogo.zone/logos/javascript/javascript-icon.svg"
+                                    alt="JavaScript">
+                                <h4>JavaScript</h4>
+                            </div>
+                        </div>
+                        <div class="skill-card interactive reveal">
+                            <div class="skill-card-content"><img
+                                    src="https://www.vectorlogo.zone/logos/php/php-icon.svg" alt="PHP">
+                                <h4>PHP</h4>
+                            </div>
+                        </div>
+                        <div class="skill-card interactive reveal">
+                            <div class="skill-card-content"><img
+                                    src="https://www.vectorlogo.zone/logos/mysql/mysql-icon.svg" alt="MySQL">
+                                <h4>MySQL</h4>
+                            </div>
+                        </div>
+                        <div class="skill-card interactive reveal">
+                            <div class="skill-card-content"><img
+                                    src="https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-icon.svg"
+                                    alt="Bootstrap">
+                                <h4>Bootstrap</h4>
+                            </div>
+                        </div>
+                        <div class="skill-card interactive reveal">
+                            <div class="skill-card-content"><img
+                                    src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
+                                    alt="Tailwind CSS">
+                                <h4>Tailwind CSS</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-center mb-8 text-stroke reveal">Tools & Platforms</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 justify-center">
+                        <div class="skill-card interactive reveal">
+                            <div class="skill-card-content"><img
+                                    src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="Git">
+                                <h4>Git</h4>
+                            </div>
+                        </div>
+                        <div class="skill-card interactive reveal">
+                            <div class="skill-card-content"><img
+                                    src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg"
+                                    class="github-icon" alt="GitHub">
+                                <h4>GitHub</h4>
+                            </div>
+                        </div>
+                        <div class="skill-card interactive reveal">
+                            <div class="skill-card-content"><img
+                                    src="https://www.vectorlogo.zone/logos/visualstudio_code/visualstudio_code-icon.svg"
+                                    alt="VS Code">
+                                <h4>VS Code</h4>
+                            </div>
+                        </div>
+                        <div class="skill-card interactive reveal">
+                            <div class="skill-card-content"><img
+                                    src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="Figma">
+                                <h4>Figma</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-center mb-8 text-stroke reveal">Actively Learning</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 justify-center">
+                        <div class="skill-card interactive reveal">
+                            <div class="skill-card-content"><img
+                                    src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg" alt="Flutter">
+                                <h4>Flutter</h4>
+                            </div>
+                        </div>
+                        <div class="skill-card interactive reveal">
+                            <div class="skill-card-content"><img
+                                    src="https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg" alt="React JS">
+                                <h4>React JS</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="works" class="py-24 section-separator">
+            <div class="text-center reveal">
+                <h2 class="text-3xl md:text-4xl font-bold main-text text-stroke">Featured Projects</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-secondary">A selection of my work. More to come!</p>
+            </div>
+            <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card group reveal interactive block rounded-xl overflow-hidden cursor-pointer"
+                    data-modal-target="tnvs-modal">
+                    <div class="overflow-hidden h-56">
+                        <img src="tnvs-login.jpeg" class="project-image w-full h-full object-cover"
+                            onerror="this.onerror=null;this.src='https://placehold.co/800x600/b8c1ec/121629?text=TNVS+System';">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold main-text">Transport Network Vehicle Service Logistics 1</h3>
+                        <p class="mt-2 text-secondary text-sm">Web-based system for logistics, inventory, and more.</p>
+                        <div class="mt-4 flex flex-wrap gap-2 items-center">
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">JS</span>
+                            <span class="tech-tag">HTML</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card group reveal relative rounded-xl overflow-hidden cursor-pointer interactive"
+                    data-modal-target="mixify-modal" data-delay="200">
+                    <div class="overflow-hidden h-56">
+                        <img src="figma1.png" class="project-image w-full h-full object-cover"
+                            onerror="this.onerror=null;this.src='https://placehold.co/800x600/eebbc3/121629?text=Mixify+UI';">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold main-text">Mixify UI Design</h3>
+                        <p class="mt-2 text-secondary text-sm">A UI/UX concept for a music application.</p>
+                        <div class="mt-4 flex flex-wrap gap-2 items-center">
+                            <span class="tech-tag">Figma</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card group reveal relative rounded-xl overflow-hidden" data-delay="400">
+                    <div class="overflow-hidden h-56">
+                        <img src="https://placehold.co/800x600/cccccc/888888?text=LMS"
+                            class="project-image w-full h-auto object-cover grayscale">
+                    </div>
+                    <div class="p-6">
+                        <div class="coming-soon-badge">Soon</div>
+                        <h3 class="text-xl font-bold main-text">Learning Management System</h3>
+                        <p class="mt-2 text-secondary text-sm">A platform for online courses and education.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="py-24 section-separator">
+            <div class="text-center reveal">
+                <h2 class="text-3xl md:text-4xl font-bold main-text text-stroke">Certifications & Seminars</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-secondary">A snapshot of my continuous learning and involvement.
+                </p>
+            </div>
+            <div class="mt-16 max-w-3xl mx-auto">
+                <div class="reveal-left">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                        <p class="text-sm font-semibold text-secondary">Online Webinar - July 13, 2025</p>
+                        <h3 class="text-2xl font-bold mt-1 main-text">Empowering the Future through Research</h3>
+                        <p class="mt-2 font-medium text-secondary">Local Solutions for Global Challenges</p>
+                    </div>
+                </div>
+                <div class="reveal-right">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                        <p class="text-sm font-semibold text-secondary">Baguio City - November 8-10, 2024</p>
+                        <h3 class="text-2xl font-bold mt-1 main-text">Ascent to Innovation</h3>
+                        <p class="mt-2 font-medium text-secondary">Where Technology meets. Tomorrow</p>
+                    </div>
+                </div>
+                <div class="reveal-left">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                        <p class="text-sm font-semibold text-secondary">Olongapo City - May 17-18, 2024</p>
+                        <h3 class="text-2xl font-bold mt-1 main-text">Beachside Code Camp</h3>
+                        <p class="mt-2 font-medium text-secondary">Diving Deep into Tech Innovation</p>
+                    </div>
+                </div>
+                <div class="reveal-right">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <p class="text-sm font-semibold text-secondary">Mariveles, Bataan - March 30 - April 1, 2023</p>
+                        <h3 class="text-2xl font-bold mt-1 main-text">BITZ 2023</h3>
+                        <p class="mt-2 font-medium text-secondary">Accelerating the Innovators' Role in Digital
+                            Transformation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 text-center">
+            <div class="reveal">
+                <h2 class="text-sm font-bold uppercase tracking-widest text-stroke">What's Next?</h2>
+                <h3 class="text-4xl md:text-5xl font-bold mt-4 main-text text-stroke">Let's Create Something Amazing
+                </h3>
+                <p class="mt-6 max-w-2xl mx-auto text-lg text-secondary">
+                    Have an idea, a project, or just want to connect? I'd love to hear from you.
+                </p>
+                <div
+                    class="mt-8 p-6 max-w-xl mx-auto border border-[var(--border-color)] rounded-lg bg-[var(--card-bg-color)] text-left">
+                    <h4 class="text-xl font-bold main-text mb-4">Contact Information</h4>
+                    <div class="space-y-3 text-secondary">
+                        <p><i class="fas fa-user w-6 text-[var(--primary-color)]"></i> Nicole Malitao</p>
+                        <p><i class="fas fa-phone w-6 text-[var(--primary-color)]"></i> 09xx-xxx-xxxx</p>
+                        <p><i class="fas fa-map-marker-alt w-6 text-[var(--primary-color)]"></i> Commonwealth, Quezon
+                            City</p>
+                    </div>
+                </div>
+                <form action="https://formspree.io/f/mrbadazl" method="POST" class="mt-8 max-w-xl mx-auto text-left">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="font-medium main-text">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-input mt-2 interactive" required>
+                        </div>
+                        <div>
+                            <label for="email" class="font-medium main-text">Your Email</label>
+                            <input type="email" id="email" name="email" class="form-input mt-2 interactive" required>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label for="subject" class="font-medium main-text">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-input mt-2 interactive" required>
+                    </div>
+                    <div class="mt-6">
+                        <label for="message" class="font-medium main-text">Message</label>
+                        <textarea id="message" name="message" rows="5" class="form-input mt-2 interactive"
+                            required></textarea>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button type="submit" class="btn-primary interactive">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t">
+        <div class="container mx-auto px-6 lg:px-12 py-8 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/khadibels" target="_blank"
+                    class="text-2xl hover:text-[var(--primary-color)] transition-colors interactive"><i
+                        class="fab fa-github"></i></a>
+                <a href="#" class="text-2xl hover:text-[var(--primary-color)] transition-colors interactive"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://instagram.com/ovilious__" target="_blank"
+                    class="text-2xl hover:text-[var(--primary-color)] transition-colors interactive"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com/khadibels" target="_blank"
+                    class="text-2xl hover:text-[var(--primary-color)] transition-colors interactive"><i
+                        class="fab fa-facebook"></i></a>
+            </div>
+            <p class="text-sm text-secondary">Designed & Built by Nicole © 2025</p>
+        </div>
+    </footer>
+
+    <div id="tnvs-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close interactive">&times;</button>
+            <h2 class="text-3xl font-bold main-text mb-4">Transport Network Vehicle Service Logistics 1</h2>
+            <p class="mb-6 text-secondary">ViaHale: TNVS Logistics 1 with Inventory & Process Optimization is a
+                web-based logistics management system designed to streamline warehouse operations, procurement,
+                logistics tracking, asset lifecycle management, and document control. It integrates multiple modules
+                into a unified platform to improve efficiency, transparency, and decision-making in transport network
+                vehicle services and logistics operations.</p>
+
+            <a href="http://logistics1.viahale.com" target="_blank"
+                class="inline-block bg-[var(--primary-color)] text-[var(--bg-dark)] font-bold py-2 px-6 rounded-lg text-md interactive hover:scale-105 transition-transform duration-200 mb-8">
+                Visit Live Site <i class="fas fa-external-link-alt ml-2"></i>
+            </a>
+
+            <div class="space-y-8">
+                <div>
+                    <img src="tnvs1.jpeg" class="rounded-lg border"
+                        onerror="this.onerror=null;this.src='https://placehold.co/800x450/121629/fffffe?text=Admin+Page';">
+                    <p class="text-center mt-2 text-sm font-medium text-secondary">Admin Page</p>
+                </div>
+                <div>
+                    <img src="tnvs2.jpeg" class="rounded-lg border"
+                        onerror="this.onerror=null;this.src='https://placehold.co/800x450/121629/fffffe?text=Smart+Warehousing';">
+                    <p class="text-center mt-2 text-sm font-medium text-secondary">Smart Warehousing Page</p>
+                </div>
+                <div>
+                    <img src="tnvs3.jpeg" class="rounded-lg border"
+                        onerror="this.onerror=null;this.src='https://placehold.co/800x450/121629/fffffe?text=Procurement';">
+                    <p class="text-center mt-2 text-sm font-medium text-secondary">Procurement Officer Side</p>
+                </div>
+                <div>
+                    <img src="tnvs4.jpeg" class="rounded-lg border"
+                        onerror="this.onerror=null;this.src='https://placehold.co/800x450/121629/fffffe?text=Logistics+Tracker';">
+                    <p class="text-center mt-2 text-sm font-medium text-secondary">Project Logistics Tracker Side</p>
+                </div>
+                <div>
+                    <img src="tnvs5.jpeg" class="rounded-lg border"
+                        onerror="this.onerror=null;this.src='https://placehold.co/800x450/121629/fffffe?text=Document+Tracking';">
+                    <p class="text-center mt-2 text-sm font-medium text-secondary">Document Tracking and Logistics
+                        Records Side</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mixify-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close interactive">&times;</button>
+            <h2 class="text-3xl font-bold main-text mb-4">Mixify UI Design</h2>
+            <p class="mb-6 text-secondary">A UI/UX concept for a modern music application, designed in Figma. The goal
+                was to create a clean, intuitive, and visually appealing interface for music discovery and playback.</p>
+
+            <div class="space-y-8">
+                <div>
+                    <h4 class="text-xl font-bold main-text mb-4">Video Prototype</h4>
+                    <video controls muted autoplay loop class="rounded-lg border w-full">
+                        <source src="figma.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold main-text mt-8 mb-4">Screenshots</h4>
+                    <img src="figma1.png" class="rounded-lg border mb-4"
+                        onerror="this.onerror=null;this.src='https://placehold.co/800x450/121629/fffffe?text=Figma+Screen+1';">
+                    <img src="figma2.png" class="rounded-lg border mb-4"
+                        onerror="this.onerror=null;this.src='https://placehold.co/800x450/121629/fffffe?text=Figma+Screen+2';">
+                    <img src="figma3.png" class="rounded-lg border"
+                        onerror="this.onerror=null;this.src='https://placehold.co/800x450/121629/fffffe?text=Figma+Screen+3';">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="chatbot-container">
+        <button id="chatbot-toggle" class="interactive">
+            <i class="fas fa-comment-dots"></i>
+            <i class="fas fa-times"></i>
+        </button>
+        <div id="chatbot-window">
+            <div id="chatbot-header">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-gray-300 mr-3 overflow-hidden">
+                        <img src="user.png" class="w-full h-full object-cover" alt="bot avatar">
+                    </div>
+                    <div>
+                        <p class="font-bold main-text">Nicole's Bot</p>
+                        <p class="text-xs text-secondary">Online</p>
+                    </div>
+                </div>
+            </div>
+            <div id="chatbot-messages">
+            </div>
+            <div id="chatbot-input-container">
+                <input type="text" id="chatbot-input" placeholder="Ask me anything, bestie!">
+                <button id="chatbot-send"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
