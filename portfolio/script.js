@@ -1,10 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
+    /* =========================
+       Preloader
+    ========================== */
     const preloader = document.getElementById('preloader');
     window.addEventListener('load', () => {
         preloader.style.opacity = '0';
         setTimeout(() => preloader.style.display = 'none', 500);
     });
 
+    /* =========================
+       Custom Cursor
+    ========================== */
     const cursorDot = document.querySelector("#cursor-dot");
     const cursorOutline = document.querySelector("#cursor-outline");
     window.addEventListener("mousemove", (e) => {
@@ -35,6 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
         cursorVisible = false;
     });
 
+    /* =========================
+       Theme Toggle
+    ========================== */
     const themeToggleBtn = document.getElementById('theme-toggle');
     const html = document.documentElement;
     function applyTheme(theme) {
@@ -64,6 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTheme(newTheme);
     });
 
+    /* =========================
+       Mobile Menu
+    ========================== */
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIcon = menuToggle.querySelector('i');
@@ -95,20 +107,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /* =========================
+       Typing Effect (Hero)
+    ========================== */
     const typingContainer = document.querySelector('.typing-container span');
     let typeInterval;
     let isTypingActive = false;
-    const phrases = ["an aspiring Full-Stack Developer", "an IT enthusiast", "an aspiring Software Engineer"];
+    const phrases = [
+        "an aspiring Full-Stack Developer",
+        "an IT enthusiast",
+        "an aspiring Software Engineer"
+    ];
     let phraseIndex = 0; let charIndex = 0; let isDeleting = false;
 
     function type() {
         if (!isTypingActive) return;
         const currentPhrase = phrases[phraseIndex];
         let typeSpeed = isDeleting ? 70 : 120;
-        if (isDeleting) { typingContainer.textContent = currentPhrase.substring(0, charIndex--); }
-        else { typingContainer.textContent = currentPhrase.substring(0, charIndex++); }
-        if (!isDeleting && charIndex === currentPhrase.length + 1) { isDeleting = true; typeSpeed = 1500; }
-        else if (isDeleting && charIndex === -1) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; }
+        if (isDeleting) {
+            typingContainer.textContent = currentPhrase.substring(0, charIndex--);
+        } else {
+            typingContainer.textContent = currentPhrase.substring(0, charIndex++);
+        }
+        if (!isDeleting && charIndex === currentPhrase.length + 1) {
+            isDeleting = true; typeSpeed = 1500;
+        } else if (isDeleting && charIndex === -1) {
+            isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length;
+        }
         typeInterval = setTimeout(type, typeSpeed);
     }
 
@@ -128,20 +153,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
     typingObserver.observe(heroSection);
 
+    /* =========================
+       Reveal Animations
+    ========================== */
     const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const delay = parseInt(entry.target.dataset.delay) || 0;
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, delay);
+                setTimeout(() => entry.target.classList.add('visible'), delay);
                 revealObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1 });
     revealElements.forEach(el => revealObserver.observe(el));
 
+    /* =========================
+       Active Nav on Scroll
+    ========================== */
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('header nav a.nav-link');
     const sectionObserver = new IntersectionObserver((entries) => {
@@ -150,15 +179,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const id = entry.target.getAttribute('id');
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${id}`) {
-                        link.classList.add('active');
-                    }
+                    if (link.getAttribute('href') === `#${id}`) link.classList.add('active');
                 });
             }
         });
     }, { rootMargin: '-50% 0px -50% 0px' });
     sections.forEach(section => sectionObserver.observe(section));
 
+    /* =========================
+       Parallax Shapes
+    ========================== */
     const shapes = document.querySelectorAll('.shape');
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
@@ -168,15 +198,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /* =========================
+       Back to Top
+    ========================== */
     const backToTopBtn = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTopBtn.classList.add('visible');
-        } else {
-            backToTopBtn.classList.remove('visible');
-        }
+        if (window.scrollY > 300) backToTopBtn.classList.add('visible');
+        else backToTopBtn.classList.remove('visible');
     });
 
+    /* =========================
+       Modals
+    ========================== */
     const modalTriggers = document.querySelectorAll('[data-modal-target]');
     modalTriggers.forEach(trigger => {
         trigger.addEventListener('click', () => {
@@ -206,134 +239,277 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Chatbot Logic ---
+    /* =========================
+       Chatbot (Persona-tuned)
+    ========================== */
+    const BOT = {
+        name: "Nicole’s portfolio bot",
+        nicknames: ["bestie", "friend"],
+        persona: {
+            fullName: "Nicole Malitao",
+            pronouns: "she/her",
+            vibes: ["playful", "sweet"],
+            codeSwitch: false, // pure English
+            jokesEnabled: true, // corny + wholesome
+            catchphrases: [
+                "We got this 💪",
+                "let’s build it for real",
+                "love that energy!",
+                "sending good vibes ✨"
+            ],
+            funFacts: [
+                "Sings and plays guitar",
+                "Night owl who loves poems and songwriting",
+                "Loves laughing and loves music so much",
+                "A truly lovely human"
+            ],
+            highlights: {
+                // Front and center
+                skills: ["PHP", "MySQL", "Bootstrap", "JavaScript", "Chart.js", "GitHub Actions"],
+                // Currently learning
+                learning: ["Flutter", "React", "Node.js", "MongoDB"],
+                contacts: {
+                    emails: ["nicmalitao@gmail.com", "bbkhadi25@gmail.com"],
+                    github: "khadibels"
+                }
+            },
+            projects: [
+                {
+                    name: "WishFund",
+                    oneLiner: "A sweet, minimalist gifting & wishlist web app with a clean, standard UI."
+                },
+                {
+                    name: "TNVS Logistics",
+                    oneLiner: "A multi-module logistics platform (Smart Warehousing, Procurement, Asset Lifecycle, Document Tracking, Project Logistics Tracker)."
+                },
+                {
+                    name: "Figma Designer",
+                    oneLiner: "Enjoys crafting UI concepts in Figma—still learning, but excited to design & iterate."
+                }
+            ]
+        }
+    };
+
+    const SITE_SECTIONS = {
+        projectsHref: "#works",
+        skillsHref: "#skills",
+        aboutHref: "#about",
+        contactHref: "#contact"
+    };
+
+    // Elements
     const chatbotToggle = document.getElementById('chatbot-toggle');
     const chatbotWindow = document.getElementById('chatbot-window');
     const chatbotMessages = document.getElementById('chatbot-messages');
     const chatbotInput = document.getElementById('chatbot-input');
     const chatbotSend = document.getElementById('chatbot-send');
 
-    let lastBotQuestion = null; // This is the bot's "memory"
+    let lastBotQuestion = null;
 
-    chatbotToggle.addEventListener('click', () => {
+    // Helpers
+    const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+    const nowGreeting = () => {
+        const h = new Date().getHours();
+        if (h < 6) return "Late night vibes!";
+        if (h < 12) return "Good morning!";
+        if (h < 18) return "Good afternoon!";
+        return "Good evening!";
+    };
+    const escapeHTML = (str) =>
+        str.replaceAll('&', '&amp;')
+
+    const addMessage = (message, sender, { html = false } = {}) => {
+        const el = document.createElement('div');
+        el.classList.add('chat-message', `${sender}-message`);
+        if (html) el.innerHTML = message; else el.textContent = message;
+        chatbotMessages.appendChild(el);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    };
+
+    const typingOn = () => {
+        addMessage(`<div class="typing-indicator"><span></span><span></span><span></span></div>`, 'bot', { html: true });
+    };
+    const typingOff = () => {
+        const tip = chatbotMessages.querySelector('.typing-indicator');
+        if (tip) tip.parentElement.remove();
+    };
+
+    const hasAny = (hay, needles) => {
+        const s = hay.toLowerCase();
+        return needles.some(n => s.includes(n));
+    };
+
+    // Intents
+    const INTENTS = {
+        greet() {
+            const greet = `${nowGreeting()} I’m ${BOT.name} 👋`;
+            lastBotQuestion = 'explore_projects';
+            return `${greet} Would you like to explore Nicole’s projects?`;
+        },
+        projects() {
+            lastBotQuestion = 'explore_projects';
+            const lines = BOT.persona.projects
+                .map(p => `• ${p.name} — ${p.oneLiner}`)
+                .join('\n');
+            const jump = SITE_SECTIONS.projectsHref ? `\n\nJump to Works: ${SITE_SECTIONS.projectsHref}` : '';
+            return `Here are Nicole’s top highlights:\n${lines}${jump}`;
+        },
+        projects_yes() {
+            lastBotQuestion = null;
+            return SITE_SECTIONS.projectsHref
+                ? `Awesome! Let’s go — ${SITE_SECTIONS.projectsHref}`
+                : `Awesome! You can scroll to the Works section to see projects and details.`;
+        },
+        experience() {
+            return `Hands-on with ${BOT.persona.highlights.skills.join(', ')}. Currently learning ${BOT.persona.highlights.learning.join(', ')}. She loves building and iterating with a playful, sweet energy.`;
+        },
+        about() {
+            const cf = pick(BOT.persona.catchphrases);
+            const ff = pick(BOT.persona.funFacts);
+            return `Nicole is a 4th-year IT student aspiring to be a software engineer. ${cf} Fun tidbit: ${ff}.`;
+        },
+        skills() {
+            const top = `Skills: ${BOT.persona.highlights.skills.join(', ')}`;
+            const learn = `Learning: ${BOT.persona.highlights.learning.join(', ')}`;
+            const jump = SITE_SECTIONS.skillsHref ? `\nSee more: ${SITE_SECTIONS.skillsHref}` : '';
+            return `${top}\n${learn}${jump}`;
+        },
+        contact() {
+            const c = BOT.persona.highlights.contacts;
+            const emails = c.emails.join(' • ');
+            const href = SITE_SECTIONS.contactHref ? ` or use the contact form ${SITE_SECTIONS.contactHref}` : '';
+            return `You can reach Nicole at ${emails}${href}. GitHub: ${c.github}`;
+        },
+        joke() {
+            if (!BOT.persona.jokesEnabled) return "I’ll keep it serious for now!";
+            const corny = [
+                "Why do programmers prefer dark mode? Because light attracts bugs. 🐛",
+                "I told my computer I needed a break, and it said 'No problem—I'll go to sleep.'",
+                "Why was the JavaScript developer sad? Because they didn’t Node how to Express themselves."
+            ];
+            const wholesome = [
+                "You’re doing great. Tiny steps still count. 🌱",
+                "Remember to drink water and breathe. You matter. 🤍",
+                "The best code is the code you ship today. You got this!"
+            ];
+            return `${pick(corny)}\n${pick(wholesome)}`;
+        },
+        music() {
+            return "When she’s not coding, she sings, plays guitar, writes poems and songs, and loves music so much.";
+        },
+        personality() {
+            return "Playful and sweet. She laughs a lot, cares deeply, and is a lovely human. Sometimes a night owl who can’t sleep!";
+        },
+        commission() {
+            const form = SITE_SECTIONS.contactHref ? ` via the contact form ${SITE_SECTIONS.contactHref}` : '';
+            return `She’d love to hear your idea! Please send scope, timeline, and references${form} or email her.`;
+        },
+        easter() {
+            return "You found a little easter egg. Thanks for being here. 🌟";
+        },
+        hire() {
+            const c = BOT.persona.highlights.contacts;
+            return (
+                `Thank you for your interest in Nicole.
+
+For opportunities, please email:
+• ${c.emails[0]}
+• ${c.emails[1]}
+GitHub: ${c.github}
+
+If you’d like, share the role, responsibilities, tech stack, timeline, and next steps. Nicole will respond promptly with her résumé, availability, and any additional materials you require.`).trim();
+        },
+        fallback() {
+            return "I’m not sure about that yet bestie. Try asking about ‘projects’, ‘skills’, ‘about’, ‘experience’, ‘contact’, ‘joke’, or ‘hire’.";
+        }
+    };
+
+    function routeIntent(raw) {
+        const lower = raw.toLowerCase();
+
+        // follow-up branch
+        if (lastBotQuestion === 'explore_projects') {
+            const yes = ['yes', 'sure', 'ok', 'okay', 'yup', 'yeah', 'details', 'go', 'please'];
+            lastBotQuestion = null;
+            return hasAny(lower, yes) ? INTENTS.projects_yes() : "Anything else I can help you with, bestie? Ask me questions about Nicole =)";
+        }
+
+        if (hasAny(lower, ['hello', 'hi', 'hey', 'good morning', 'good evening', 'good afternoon'])) return INTENTS.greet();
+        if (hasAny(lower, ['project', 'works', 'portfolio', 'wishfund', 'tnvs'])) return INTENTS.projects();
+        if (hasAny(lower, ['experience', 'ojt', 'intern', 'work history'])) return INTENTS.experience();
+        if (hasAny(lower, ['about', 'who is nicole', 'who are you'])) return INTENTS.about();
+        if (hasAny(lower, ['skill', 'stack', 'tech', 'tools'])) return INTENTS.skills();
+        if (hasAny(lower, ['contact', 'email', 'reach', 'github'])) return INTENTS.contact();
+        if (hasAny(lower, ['joke', 'humor', 'funny'])) return INTENTS.joke();
+        if (hasAny(lower, ['sing', 'guitar', 'music', 'poem', 'poems', 'song', 'songs'])) return INTENTS.music();
+        if (hasAny(lower, ['personality', 'vibe'])) return INTENTS.personality();
+        if (hasAny(lower, ['commission', 'freelance', 'rate', 'price'])) return INTENTS.commission();
+        if (hasAny(lower, ['secret', 'surprise', 'easter'])) return INTENTS.easter();
+        if (hasAny(lower, ['hire', 'job', 'role', 'openings', 'opportunity'])) return INTENTS.hire();
+
+        return INTENTS.fallback();
+    }
+
+    // kindness nudge for stressed messages
+    const NEG = ['tired', 'stressed', 'scared', 'anxious', 'can’t sleep', 'cant sleep', 'i’m stuck', 'i am stuck', 'confused', 'cry', 'overwhelmed'];
+    const sentimentNudge = (raw) => {
+        if (hasAny(raw.toLowerCase(), NEG)) {
+            const msg = "You’re doing great. Breathe and take it one tiny step at a time. If you want, I can show Nicole’s projects or skills to inspire you. 💫";
+            addMessage(msg, 'bot');
+            return true;
+        }
+        return false;
+    };
+
+    // Wire up
+    chatbotToggle?.addEventListener('click', () => {
         chatbotToggle.classList.toggle('open');
         chatbotWindow.classList.toggle('open');
     });
 
-    const addMessage = (message, sender) => {
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('chat-message', `${sender}-message`);
-        messageElement.textContent = message;
-        chatbotMessages.appendChild(messageElement);
-        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-    };
-
-    const getBotResponse = (userInput) => {
-        const lowerInput = userInput.toLowerCase();
-
-        // --- Contextual Responses ---
-        if (lastBotQuestion === 'explore_projects') {
-            const affirmatives = ['yes', 'sure', 'ok', 'yup', 'yeah', 'details'];
-            lastBotQuestion = null; // Clear context after one use
-            if (affirmatives.some(word => lowerInput.includes(word))) {
-                return "Awesome! You should check out her 'Works' section. Her main project is a full Transport Network Vehicle Service (TNVS) Logistics system. It's super detailed!";
-            } else {
-                return "Okay, no worries! Is there anything else I can help you with, bestie?";
-            }
-        }
-
-        // --- Keyword-based General Responses ---
-
-        // Greetings & Small Talk
-        const greetings = ['hello', 'hi', 'hey', 'good morning'];
-        if (greetings.some(word => lowerInput.includes(word))) {
-            lastBotQuestion = 'explore_projects';
-            return "Hi! I’m Nicole’s portfolio bot 👋. Want to explore her projects?";
-        }
-
-        // Portfolio Navigation
-        if (lowerInput.includes('project')) {
-            lastBotQuestion = 'explore_projects';
-            return "Nicole has built a logistics system and more! Want details?";
-        }
-        if (lowerInput.includes('experience')) {
-            return "She has experience in PHP, MySQL, and full-stack dev—plus she's getting ready for OJT training. Check out the 'Experience' section for the deets!";
-        }
-        if (lowerInput.includes('about')) {
-            return "Nicole is a 4th-year IT student aspiring to be a software engineer. The 'About Me' section has her full story!";
-        }
-        if (lowerInput.includes('skill')) {
-            return "Her toolkit includes PHP, JavaScript, Bootstrap, MySQL, and she's currently learning Flutter and React!";
-        }
-        if (lowerInput.includes('contact')) {
-            return "You can reach Nicole via the contact form on this page or by emailing nicmalitao@gmail.com. Her GitHub is khadibels.";
-        }
-
-        // Fun & Personality
-        if (lowerInput.includes('joke')) {
-            return "Why do programmers prefer dark mode? Because light attracts bugs. 🐛";
-        }
-        if (lowerInput.includes('sing') || lowerInput.includes('guitar')) {
-            return "Nicole loves singing and playing guitar when she’s not coding!";
-        }
-        if (lowerInput.includes('fact')) {
-            return "Fun fact: Her capstone project is a full logistics management system with multiple modules!";
-        }
-        if (lowerInput.includes('personality')) {
-            return "She's very jolly and easy to be with, but her social battery can get low sometimes!";
-        }
-        if (lowerInput.includes('commission')) {
-            return "She'd love to! Just send her a message through the contact form with the details. :DD";
-        }
-
-        // Easter Eggs
-        if (lowerInput.includes('secret') || lowerInput.includes('surprise')) {
-            return "You found the easter egg! Nicole says hi and thanks for visiting.";
-        }
-        if (lowerInput.includes('hire')) {
-            return "Looking to hire? Great choice—Nicole is ready for new challenges and would love to hear from you!";
-        }
-
-        // Fallback / Error
-        lastBotQuestion = null; // Clear context on unknown input
-        return "Hmm, I don’t know that one yet 🤔. Try asking about 'projects', 'skills', or 'contact'.";
-    };
-
-    const handleSendMessage = () => {
+    const handleSend = () => {
         const message = chatbotInput.value.trim();
         if (message === '') return;
 
-        addMessage(message, 'user');
+        addMessage(escapeHTML(message), 'user');
         chatbotInput.value = '';
 
+        if (sentimentNudge(message)) return;
+
+        typingOn();
         setTimeout(() => {
-            const botResponse = getBotResponse(message);
+            typingOff();
+            const botResponse = routeIntent(message);
             addMessage(botResponse, 'bot');
-        }, 1000);
+        }, 900 + Math.random() * 700);
     };
 
-    chatbotSend.addEventListener('click', handleSendMessage);
-    chatbotInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            handleSendMessage();
-        }
+    chatbotSend?.addEventListener('click', handleSend);
+    chatbotInput?.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleSend();
     });
 
-    // Initial bot message
+    // initial greet
     setTimeout(() => {
-        addMessage("Hi! I’m Nicole’s portfolio bot 👋. Want to explore her projects?", 'bot');
-        lastBotQuestion = 'explore_projects';
-    }, 1500);
+        typingOn();
+        setTimeout(() => {
+            typingOff();
+            addMessage(`${nowGreeting()} I’m ${BOT.name} 👋. Would you like to explore Nicole’s projects?`, 'bot');
+            lastBotQuestion = 'explore_projects';
+        }, 1100);
+    }, 1200);
 
-    // Project Card Tilt Effect
+    /* =========================
+       Card Tilt & Skill Float
+    ========================== */
     document.querySelectorAll('.project-card').forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             const { width, height } = rect;
-            const rotateX = (y / height - 1.5) * -15;
-            const rotateY = (x / width - -1.5) * 10;
+            const rotateX = (y / height - 0.5) * -15;
+            const rotateY = (x / width - 0.5) * 15;
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
         card.addEventListener('mouseleave', () => {
@@ -341,7 +517,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Staggered animation for skill cards
     document.querySelectorAll('.skill-card').forEach((card, index) => {
         const delay = index * 100;
         const duration = 4000 + Math.random() * 2000;
